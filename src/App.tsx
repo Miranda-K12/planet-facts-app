@@ -9,6 +9,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/planet/mercury" replace />} />
+        <Route
+          path="/planet"
+          element={<Navigate to="/planet/mercury" replace />}
+        />
         <Route path="/planet/:planetName" element={<Planet />} />
       </Routes>
     </div>

@@ -10,14 +10,16 @@
   color: $color-white;
   font-family: $primary-font;
   border-bottom: 1px solid $color-grey;
-  box-sizing: border-box;
   background-color: $color-black;
   z-index: 100;
+  box-sizing: border-box; // Optional: Could move this to a global base style
+
   .header_button {
     cursor: pointer;
     background-color: transparent;
     color: $color-white;
     border: none;
+
     h1 {
       font-size: 28px;
       text-transform: $text-style;
@@ -27,12 +29,15 @@
   ul {
     @include flex;
     list-style-type: none;
+    padding: 0;
+
     .navLink {
       font-size: 14px;
       color: $color-white;
       text-decoration: none;
       text-transform: $text-style;
       letter-spacing: $letter-spacing;
+      position: relative; // Added position for pseudo-elements
       display: inline-block;
       transition: transform 0.3s ease;
 

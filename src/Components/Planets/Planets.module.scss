@@ -1,10 +1,8 @@
 @import "../../styles/variables";
 @import "../../styles/mixin";
-
 .planet__container {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 200px;
   margin-bottom: 100px;
   color: aliceblue;
   @include flex($direction: column, $gap: 100px);
@@ -13,31 +11,33 @@
     display: grid;
     grid-template-columns: 45% 35%;
     gap: 20%;
-    width: 100%;
+    width: 80%;
+    margin-left: 20%;
     .planet_item {
-      width: 80%;
+      width: 100%;
       height: auto;
       @include flex;
       position: relative;
+
       .planet_img {
         width: 100%;
         height: auto;
       }
+
       .geology_overlay_img {
         position: absolute;
-        top: 90%;
+        top: 80%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 165px;
-        height: 200px;
+        width: 40%;
+        height: auto;
       }
     }
 
     .planet_info {
       width: 100%;
       color: $color-white;
-      @include flex($direction: column, $align: start);
-
+      @include flex($direction: column, $align: flex-start);
       h1 {
         font-size: $planet-name-font;
         text-transform: $text-style;
@@ -62,9 +62,10 @@
 
       .button_container {
         @include flex($direction: column, $gap: 16px);
+        width: 100%;
 
         button {
-          width: 350px;
+          width: 100%;
           padding: 12px 0;
           font-size: $small-font;
           font-weight: $font-semi-bold;
@@ -81,9 +82,11 @@
           &:hover {
             filter: brightness(0.5);
           }
+
           &:active {
             transform: scale(1.05);
           }
+
           span {
             margin: 0 24px;
           }
@@ -91,19 +94,22 @@
       }
     }
   }
+
   .planet_facts {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+
     .planet_facts_box {
       border: 1px solid $color-grey;
       color: $color-white;
       padding: 20px 60px 20px 20px;
-      @include flex($direction: column, $gap: 0, $align: start);
+      @include flex($direction: column, $gap: 0, $align: flex-start);
       text-transform: $text-style;
       cursor: pointer;
       transition: all 0.3s ease-out;
+
       &:hover {
         transform: scale(1.05);
       }
@@ -114,11 +120,11 @@
         opacity: 0.5;
         margin-bottom: 24px;
       }
+
       .fact_numbers {
         font-size: 40px;
         font-family: $primary-font;
         opacity: 1;
-        cursor: pointer;
       }
     }
   }

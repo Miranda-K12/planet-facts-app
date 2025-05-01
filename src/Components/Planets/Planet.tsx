@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { PlanetData, PlanetName } from "../../types/types";
 import IconSource from "/assets/icon-source.svg";
 import { planetColors } from "../../constants/planetColors";
-
+import { motion } from "framer-motion";
 function Planet() {
   const [activeButton, setActiveButton] = useState("overview");
   const { planetName } = useParams();
@@ -32,8 +32,8 @@ function Planet() {
     <div className={styles.planet__container}>
       <div className={styles.planet_info_box}>
         <div className={styles.planet_item}>
-          <img
-            key={activeButton}
+          <motion.img
+            key={planet.name}
             src={
               activeButton === "overview"
                 ? planet.images.planet
@@ -43,13 +43,20 @@ function Planet() {
             }
             alt={planet.name}
             className={styles.planet_img}
+            initial={{ rotate: 45, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            transition={{ duration: 0.4 }}
           />
 
           {activeButton === "geology" && (
-            <img
+            <motion.img
+              key={planet.name + "geology"}
               src={planet.images.geology}
               alt={`${planet.name} surface geology`}
               className={styles.geology_overlay_img}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
             />
           )}
         </div>
