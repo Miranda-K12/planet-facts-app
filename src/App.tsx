@@ -8,12 +8,8 @@ function App() {
     <div className={styles.app_container}>
       <Header />
       <Routes>
-        <Route path="/" element={<Navigate to="/planet/mercury" replace />} />
-        <Route
-          path="/planet"
-          element={<Navigate to="/planet/mercury" replace />}
-        />
-        <Route path="/planet/:planetName" element={<Planet />} />
+        <Route path="/" element={<Navigate to="/mercury" replace />} />
+        <Route path="/:planetName" element={<Planet />} />
       </Routes>
     </div>
   );

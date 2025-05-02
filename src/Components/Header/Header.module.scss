@@ -12,16 +12,18 @@
   border-bottom: 1px solid $color-grey;
   background-color: $color-black;
   z-index: 100;
-  box-sizing: border-box; // Optional: Could move this to a global base style
+  box-sizing: border-box;
+  @media (max-width: 1024px) {
+    @include flex($direction: column);
+  }
 
   .header_button {
     cursor: pointer;
     background-color: transparent;
     color: $color-white;
     border: none;
-
-    h1 {
-      font-size: 28px;
+    .header_title {
+      font-size: $large-text-font;
       text-transform: $text-style;
     }
   }
@@ -37,7 +39,7 @@
       text-decoration: none;
       text-transform: $text-style;
       letter-spacing: $letter-spacing;
-      position: relative; // Added position for pseudo-elements
+      position: relative;
       display: inline-block;
       transition: transform 0.3s ease;
 

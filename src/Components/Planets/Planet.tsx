@@ -62,8 +62,8 @@ function Planet() {
         </div>
 
         <div className={styles.planet_info}>
-          <h1>{planet.name}</h1>
           <div className={styles.content_area}>
+            <h1 className={styles.planet_name}>{planet.name}</h1>
             {activeButton === "overview" && (
               <>
                 <p>{planet.overview.content}</p>
