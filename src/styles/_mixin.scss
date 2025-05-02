@@ -1,25 +1,62 @@
-@import './variables';
+@import "./variables";
 
-@mixin flex($direction: row, $justify: space-between, $align: center, $gap:24px) {
+@mixin flex(
+  $direction: row,
+  $justify: space-between,
+  $align: center,
+  $gap: 24px
+) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $align;
-  gap:$gap;
+  gap: $gap;
 }
 
+@mixin grid-layout($columns: repeat(4, 1fr), $gap: 30px) {
+  display: grid;
+  grid-template-columns: $columns;
+  gap: $gap;
+  width: 100%;
+}
 
 @mixin button-styles {
-  border: none;
-  background-color: $black-color;
-  color:$write-color;
+  width: 100%;
+  padding: 12px 0;
+  font-size: $small-font;
+  font-weight: $font-semi-bold;
   letter-spacing: $letter-spacing;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-weight: $font-weight;
+  color: $color-white;
+  line-height: $line-height;
+  text-transform: $text-style;
+  text-align: left;
+  letter-spacing: 2.5px;
+  border: 1px solid $color-grey;
   cursor: pointer;
-  transition: all 0.2s ease-in;
-  &:hover{
+  background-color: transparent;
+  transition: all 0.2s ease-out;
+
+  &:hover {
     filter: brightness(0.8);
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 480px) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (max-width: 1440px) {
+      @content;
+    }
   }
 }

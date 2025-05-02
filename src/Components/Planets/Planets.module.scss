@@ -8,155 +8,126 @@
   @include flex($direction: column, $gap: 100px);
 
   .planet_info_box {
-    display: grid;
-    grid-template-columns: 45% 35%;
-    gap: 20%;
-    width: 100%;
-
-    @media (max-width: 1024px) {
-      grid-template-columns: 1fr;
+    @include grid-layout(45% 35%, 20%);
+    @include respond-to(lg) {
+      @include grid-layout(1fr, 40px);
       margin: 0 auto;
-      gap: 40px;
       width: 90%;
     }
-    .planet_item {
-      width: 100%;
-      height: auto;
-      @include flex;
-      position: relative;
-      @media (max-width: 1024px) {
-        width: 50%;
-        margin: 0 auto;
-      }
-      .planet_img {
-        width: 80%;
-        height: auto;
-      }
-      .geology_overlay_img {
-        position: absolute;
-        top: 80%;
-        left: 40%;
-        transform: translate(-50%, -50%);
-        width: 30%;
-        height: auto;
-      }
+  }
+  .planet_item {
+    width: 100%;
+    height: auto;
+    @include flex;
+    position: relative;
+
+    @include respond-to(lg) {
+      width: 50%;
+      margin: 0 auto;
     }
+  }
+  .planet_img {
+    width: 80%;
+    height: auto;
+  }
+  .geology_overlay_img {
+    position: absolute;
+    top: 80%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: auto;
+  }
+}
 
-    .planet_info {
-      width: 100%;
-      color: $color-white;
-      @include flex(
-        $direction: column,
-        $align: flex-start,
-        $justify: flex-start,
-        $gap: 100px
-      );
+.planet_info {
+  width: 100%;
+  color: $color-white;
+  @include flex($direction: column, $align: flex-start);
 
-      @media (max-width: 1024px) {
-        display: grid;
-        grid-template-columns: 50% 40%;
-        gap: 10%;
-        align-items: end;
+  @include respond-to(lg) {
+    @include grid-layout(50% 40%, 10%);
+    align-items: end;
+  }
+  .planet_name {
+    font-size: $planet-name-font;
+    text-transform: $text-style;
+    font-family: $primary-font;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    @include respond-to(lg) {
+      font-size: $planet-name-small-font;
+    }
+  }
+
+  p {
+    font-family: $secondary-font;
+    font-size: $text-font;
+    line-height: $line-height;
+  }
+
+  a {
+    color: $color-white;
+    text-decoration: none;
+    font-size: $text-font;
+    line-height: $line-height;
+    margin-right: 8px;
+    opacity: 0.5;
+  }
+
+  .button_container {
+    @include flex($direction: column, $justify: space-between);
+    width: 100%;
+    button {
+      @include button-styles;
+
+      &:active {
+        opacity: 0.8;
       }
-      .planet_name {
-        font-size: $planet-name-font;
-        text-transform: $text-style;
-        font-family: $primary-font;
-        letter-spacing: 1.5px;
-        margin-bottom: 16px;
-        @media (max-width: 1024px) {
-          font-size: $planet-name-small-font;
-        }
-      }
 
-      p {
-        font-family: $secondary-font;
-        font-size: $text-font;
-        line-height: $line-height;
-      }
-
-      a {
-        color: $color-white;
-        text-decoration: none;
-        font-size: $text-font;
-        line-height: $line-height;
-        margin-right: 8px;
-        opacity: 0.5;
-      }
-
-      .button_container {
-        @include flex($direction: column, $justify: space-between);
-        width: 100%;
-        button {
-          width: 100%;
-          padding: 12px 0;
-          font-size: $small-font;
-          font-weight: $font-semi-bold;
-          color: $color-white;
-          line-height: $line-height;
-          text-transform: $text-style;
-          text-align: left;
-          letter-spacing: 2.5px;
-          border: 1px solid $color-grey;
-          cursor: pointer;
-          background-color: transparent;
-          transition: all 0.3s ease-out;
-
-          &:hover {
-            filter: brightness(0.5);
-          }
-
-          &:active {
-            transform: scale(1.05);
-          }
-
-          span {
-            margin: 0 24px;
-            @media (max-width: 1024px) {
-              margin: 0 12px;
-            }
-          }
+      span {
+        margin: 0 24px;
+        @include respond-to(lg) {
+          margin: 0 12px;
         }
       }
     }
   }
+}
 
-  .planet_facts {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+.planet_facts {
+  width: 100%;
+  @include grid-layout(repeat(4, 1fr), 30px);
 
-    .planet_facts_box {
-      border: 1px solid $color-grey;
-      color: $color-white;
-      padding: 20px 60px 20px 20px;
-      @include flex($direction: column, $gap: 0, $align: flex-start);
+  .planet_facts_box {
+    border: 1px solid $color-grey;
+    color: $color-white;
+    padding: 20px 60px 20px 20px;
+    @include flex($direction: column, $gap: 0, $align: flex-start);
+    text-transform: $text-style;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    @include respond-to(lg) {
+      padding: 20px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    p {
       text-transform: $text-style;
-      cursor: pointer;
-      transition: all 0.3s ease-out;
-      @media (max-width: 1024px) {
-        padding: 20px;
-      }
+      font-size: $small-font;
+      opacity: 0.5;
+      margin-bottom: 24px;
+    }
 
-      &:hover {
-        transform: scale(1.05);
-      }
-
-      p {
-        text-transform: $text-style;
-        font-size: $small-font;
-        opacity: 0.5;
-        margin-bottom: 24px;
-      }
-
-      .fact_numbers {
-        font-size: 40px;
-        font-family: $primary-font;
-        opacity: 1;
-        @media (max-width: 1024px) {
-          font-size: $large-text-font;
-        }
+    .fact_numbers {
+      font-size: 40px;
+      font-family: $primary-font;
+      opacity: 1;
+      @include respond-to(lg) {
+        font-size: $large-text-font;
       }
     }
   }

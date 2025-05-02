@@ -13,7 +13,7 @@
   background-color: $color-black;
   z-index: 100;
   box-sizing: border-box;
-  @media (max-width: 1024px) {
+  @include respond-to(lg) {
     @include flex($direction: column);
   }
 
@@ -34,7 +34,7 @@
     padding: 0;
 
     .navLink {
-      font-size: 14px;
+      font-size: $small-font;
       color: $color-white;
       text-decoration: none;
       text-transform: $text-style;
