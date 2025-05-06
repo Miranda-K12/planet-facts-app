@@ -35,6 +35,14 @@
   cursor: pointer;
   background-color: transparent;
   transition: all 0.2s ease-out;
+  @include respond-to(md) {
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    width: auto;
+    padding: 10px;
+    font-size: $font-size-xs;
+  }
 
   &:hover {
     filter: brightness(0.8);

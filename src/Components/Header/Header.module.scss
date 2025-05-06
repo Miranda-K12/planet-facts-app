@@ -9,14 +9,25 @@
   padding: 22px 32px;
   color: $color-white;
   font-family: $primary-font;
-  border-bottom: 1px solid $color-grey;
+  border-bottom: 0.5px solid $color-grey;
   background-color: $color-black;
   z-index: 100;
   box-sizing: border-box;
   @include respond-to(lg) {
     @include flex($direction: column);
   }
+  @include respond-to(md) {
+    background-color: $color-black;
+    width: 100%;
+    border-bottom: none;
 
+    @include flex(
+      $direction: column,
+      $justify: start,
+      $align: flex-start,
+      $gap: 0
+    );
+  }
   .header_button {
     cursor: pointer;
     background-color: transparent;
@@ -32,6 +43,16 @@
     @include flex;
     list-style-type: none;
     padding: 0;
+    @include respond-to(md) {
+      display: none;
+      transition: all 0.3s ease-out;
+      &.open {
+        @include respond-to(md) {
+          @include flex($direction: column, $align: space-around);
+          margin-top: 24px;
+        }
+      }
+    }
 
     .navLink {
       font-size: $small-font;
@@ -42,6 +63,13 @@
       position: relative;
       display: inline-block;
       transition: transform 0.3s ease;
+      @include respond-to(md) {
+        font-size: $text-font;
+        border-bottom: 1px solid $color-grey;
+        padding-bottom: 12px;
+        width: 90vw;
+        margin: 0 auto;
+      }
 
       &::after,
       &::before {
@@ -55,21 +83,51 @@
         transform: scaleX(0);
         transform-origin: right;
         transition: transform 0.4s ease-out;
+        @include respond-to(md) {
+          display: none;
+        }
       }
 
       &::before {
         top: -5px;
         transform-origin: left;
       }
-
       &:hover {
         transform: scale(1.2);
-
+        @include respond-to(md) {
+          transform: scale(1.01);
+        }
         &::after,
         &::before {
           transform: scaleX(1);
         }
       }
+      .planetCircle {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-right: 16px;
+        vertical-align: middle;
+        display: none;
+
+        @include respond-to(md) {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .burgerMenu {
+    font-size: 36px;
+    cursor: pointer;
+    color: $color-white;
+    position: absolute;
+    right: 32px;
+    top: 24px;
+    display: none;
+
+    @include respond-to(md) {
+      display: block;
     }
   }
 }

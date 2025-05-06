@@ -6,7 +6,10 @@
   margin-bottom: 100px;
   color: aliceblue;
   @include flex($direction: column, $gap: 100px);
-
+  @include respond-to(md) {
+    @include flex($direction: column, $gap: 50px);
+    margin-bottom: 50px;
+  }
   .planet_info_box {
     @include grid-layout(45% 35%, 20%);
     @include respond-to(lg) {
@@ -29,11 +32,12 @@
   .planet_img {
     width: 80%;
     height: auto;
+    margin: 0 auto;
   }
   .geology_overlay_img {
     position: absolute;
     top: 80%;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, -50%);
     width: 30%;
     height: auto;
@@ -44,10 +48,13 @@
   width: 100%;
   color: $color-white;
   @include flex($direction: column, $align: flex-start);
-
   @include respond-to(lg) {
     @include grid-layout(50% 40%, 10%);
     align-items: end;
+  }
+  @include respond-to(md) {
+    @include grid-layout((1fr));
+    text-align: center;
   }
   .planet_name {
     font-size: $planet-name-font;
@@ -56,7 +63,10 @@
     letter-spacing: 1.5px;
     margin-bottom: 16px;
     @include respond-to(lg) {
-      font-size: $planet-name-small-font;
+      font-size: $planet-name-secondary-font;
+    }
+    @include respond-to(md) {
+      font-size: $header-font;
     }
   }
 
@@ -78,17 +88,24 @@
   .button_container {
     @include flex($direction: column, $justify: space-between);
     width: 100%;
+    @include respond-to(md) {
+      position: absolute;
+      top: 100px;
+      @include flex;
+    }
+
     button {
       @include button-styles;
-
       &:active {
         opacity: 0.8;
       }
-
       span {
         margin: 0 24px;
         @include respond-to(lg) {
           margin: 0 12px;
+        }
+        @include respond-to(md) {
+          display: none;
         }
       }
     }
@@ -98,7 +115,12 @@
 .planet_facts {
   width: 100%;
   @include grid-layout(repeat(4, 1fr), 30px);
-
+  @include respond-to(md) {
+    @include grid-layout(repeat(2, 1fr), 30px);
+  }
+  @include respond-to(sm) {
+    @include grid-layout((1fr), 30px);
+  }
   .planet_facts_box {
     border: 1px solid $color-grey;
     color: $color-white;
@@ -110,7 +132,10 @@
     @include respond-to(lg) {
       padding: 20px;
     }
-
+    @include respond-to(sm) {
+      @include flex($align: center);
+      padding-bottom: 0;
+    }
     &:hover {
       transform: scale(1.05);
     }
@@ -123,7 +148,7 @@
     }
 
     .fact_numbers {
-      font-size: 40px;
+      font-size: $header-font;
       font-family: $primary-font;
       opacity: 1;
       @include respond-to(lg) {
