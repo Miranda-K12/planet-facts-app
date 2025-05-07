@@ -43,6 +43,10 @@
     padding: 10px;
     font-size: $font-size-xs;
   }
+  @include respond-to(sm) {
+    padding: 4px;
+    font-size: 8px;
+  }
 
   &:hover {
     filter: brightness(0.8);
