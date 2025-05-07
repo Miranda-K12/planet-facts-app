@@ -3,13 +3,13 @@
 .planet__container {
   width: 90%;
   margin: 0 auto;
-  margin-bottom: 100px;
   margin-top: 100px;
 
   @include flex($direction: column, $gap: 100px);
   @include respond-to(md) {
     @include flex($direction: column, $gap: 50px);
     margin-bottom: 50px;
+    margin-top: 50px;
   }
   .planet_info_box {
     @include grid-layout(45% 35%, 20%);
@@ -91,17 +91,19 @@
     @include flex($direction: column, $justify: space-between);
     width: 100%;
     @include respond-to(md) {
-      position: absolute;
       @include flex($direction: row);
-      top: 100px;
-      max-width: 768px;
-      width: 90%;
     }
     @include respond-to(sm) {
       @include flex($justify: center, $gap: 4px);
     }
+    @include respond-to(sm) {
+      @include flex($direction: column);
+    }
     button {
       @include button-styles;
+      @include respond-to(sm) {
+        width: 100%;
+      }
       &:active {
         opacity: 0.8;
       }

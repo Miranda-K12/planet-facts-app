@@ -9,6 +9,7 @@ function Header() {
   const handleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   return (
     <div className={styles.header}>
       <h1 className={styles.header_title}>The Planets</h1>

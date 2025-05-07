@@ -8,7 +8,7 @@
   color: $color-white;
   font-family: $primary-font;
   border-bottom: 0.5px solid $color-grey;
-  z-index: 100;
+  z-index: 1000;
   @include respond-to(lg) {
     @include flex($direction: column);
   }
@@ -94,7 +94,6 @@
         margin-right: 16px;
         vertical-align: middle;
         display: none;
-
         @include respond-to(md) {
           display: inline-block;
         }
@@ -110,7 +109,6 @@
     right: 32px;
     top: 24px;
     display: none;
-
     @include respond-to(md) {
       display: block;
     }
