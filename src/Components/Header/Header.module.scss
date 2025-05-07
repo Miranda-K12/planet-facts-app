@@ -4,22 +4,17 @@
   @include flex;
   top: 0;
   left: 0;
-
   padding: 22px 32px;
   color: $color-white;
   font-family: $primary-font;
   border-bottom: 0.5px solid $color-grey;
-  background-color: $color-black;
   z-index: 100;
-
   @include respond-to(lg) {
     @include flex($direction: column);
   }
   @include respond-to(md) {
-    background-color: $color-black;
     padding-left: 0;
     border-bottom: none;
-
     @include flex($direction: column, $align: start, $gap: 0);
   }
   .header_button {
