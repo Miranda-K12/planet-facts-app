@@ -1,9 +1,11 @@
 @import "./styles/variables";
 @import "./styles/mixin";
 
+body {
+}
 .app_container {
   max-width: 1440px;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   background-color: $color-black;
 }

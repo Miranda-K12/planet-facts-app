@@ -13,7 +13,6 @@
     @include flex($direction: column);
   }
   @include respond-to(md) {
-    padding-left: 0;
     border-bottom: none;
     @include flex($direction: column, $align: start, $gap: 0);
   }
